@@ -23,7 +23,7 @@ All premailer options are supported, you can view details here: http://premailer
 ```
 {% cache %}
 
-    {% premailer with {options} %}
+    {% premailer with {preserve_styles:false, remove_ids: true, remove_classes: true, remove_comments: true} %}
     {# you can also use: {% premailer %} #}
         <html>
             <head>
