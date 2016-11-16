@@ -17,6 +17,13 @@ class PremailerService extends BaseApplicationComponent
 	
 	public function compile($body, $options = array())
 	{
+		/* The Premailer API needs booleans to be stringified */
+		foreach($options as $key => $val) {
+			if(is_bool($val))	{
+				$options[$key] = $val ? 'true' : 'false';
+			}
+		}
+		
 		$options['html'] = $body;
 		
 		$apiRequest = $this->client->createRequest("POST", "http://premailer.dialect.ca/api/0.1/documents", null, $options);
